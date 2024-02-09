@@ -2,6 +2,7 @@
 @import 'SearchBar.css';
 @import 'Carousel.css';
 @import 'NotFound.css';
+@import 'Prestations.css';
 
 * {
   margin: 0;

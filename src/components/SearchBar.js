@@ -7,8 +7,6 @@ function SearchBar() {
             <i class="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
-
-
     )
 }
 

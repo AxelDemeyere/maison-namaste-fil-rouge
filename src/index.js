@@ -4,6 +4,10 @@ import './index.css';
 import App from './routes/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Prestations from './routes/Prestations';
+import RendezVous from './routes/RendezVous';
+import Contact from './routes/Contact';
+import CarteCadeau from './routes/CarteCadeau';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,10 +15,10 @@ root.render(
     <BrowserRouter>
     <Routes>
       <Route path={'/'} element={ <App />} />
-      <Route path={'/prestations'} />
-      <Route path={'/rendez-vous'} />
-      <Route path={'/contact'} />
-      <Route path={'/carte-cadeau'} />
+      <Route path={'/prestations'} element={<Prestations />} />
+      <Route path={'/rendez-vous'} element={<RendezVous />} />
+      <Route path={'/contact'} element={<Contact />} />
+      <Route path={'/carte-cadeau'} element={<CarteCadeau />} />
       <Route path={'/*'} />
     </Routes>
     </BrowserRouter>

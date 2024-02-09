@@ -1,5 +1,5 @@
 
-import logo from '../img/logo.jpg'
+import logoT from '../img/logo-transparence.png'
 import carousel1 from '../img/carousel-1.jpg'
 import carousel2 from '../img/carousel-2.jpg'
 import carousel3 from '../img/carousel-3.jpg'
@@ -19,7 +19,7 @@ function Header() {
     return (
         <>
             <header>
-                <img src={logo} alt="" />
+                <img onClick={() => navigate('/')} src={logoT} alt="" />
             </header>
             <nav>
                     <ul>

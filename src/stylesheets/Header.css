@@ -29,7 +29,7 @@ nav {
 
         li:hover {
             cursor: pointer;
-            transform: translateY(-10px);
+            transform: scale(1.1);
             text-decoration: underline;
             font-weight: bold;
         }

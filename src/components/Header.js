@@ -23,7 +23,7 @@ function Header() {
             </header>
             <nav>
                     <ul>
-                        <li onClick={() => navigate('/about')}>L'entreprise</li>
+                        <li onClick={() => navigate('/a-propos')}>L'entreprise</li>
                         <li onClick={() => navigate('/prestations')}>Prestations</li>
                         <li onClick={() => navigate('/rendez-vous')}>Rendez-vous</li>
                         <li onClick={() => navigate('/contact')}>Contact</li>

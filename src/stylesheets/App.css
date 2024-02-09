@@ -1,6 +1,7 @@
 @import 'Header.css';
 @import 'SearchBar.css';
 @import 'Carousel.css';
+@import 'NotFound.css';
 
 * {
   margin: 0;

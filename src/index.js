@@ -10,11 +10,13 @@ import Contact from './routes/Contact';
 import CarteCadeau from './routes/CarteCadeau';
 import NotFound from './routes/NotFound';
 import About from './routes/About';
+import Layout from './components/Layout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Layout>
       <Routes>
         <Route path={'/'} element={<App />} />
         <Route path={'/a-propos'} element={<About />} />
@@ -24,6 +26,7 @@ root.render(
         <Route path={'/carte-cadeau'} element={<CarteCadeau />} />
         <Route path={'/*'} element={<NotFound />} />
       </Routes>
+      </Layout>
     </BrowserRouter>
 
   </React.StrictMode>

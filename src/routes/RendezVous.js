@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+
 
 function RendezVous() {
     return (
         <>
-            <Header />
+
         </>
     )
 }

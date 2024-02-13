@@ -1,8 +1,8 @@
 import logoT from '../img/logo-transparence.png'
-import React from 'react'
+import React, { Children } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Header() {
+function Layout({ children }) {
 
     const navigate = useNavigate()
 
@@ -11,7 +11,7 @@ function Header() {
             <header>
                 <img onClick={() => navigate('/')} src={logoT} alt="" />
             </header>
-            <nav>
+            <nav className='nav-header'>
                 <ul>
                     <li onClick={() => navigate('/a-propos')}>L'entreprise</li>
                     <li onClick={() => navigate('/prestations')}>Prestations</li>
@@ -20,10 +20,11 @@ function Header() {
                     <li onClick={() => navigate('/carte-cadeau')}>Carte cadeau</li>
                 </ul>
             </nav>
+            <main>{children}</main>
         </>
     )
 }
 
 
 
-export default Header;
+export default Layout;

@@ -1,52 +1,142 @@
-.prestations-container {
+.main-categories {
     display: flex;
-    flex-direction: column;
-    box-shadow: 0px 10px 20px -3px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    width: 40%;
-    margin: 0 auto;
-    padding: 2rem 3rem;
-
-    .prestation {
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 2rem 1.5rem;
-        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 
 
-        .prestation-infos {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            font-weight: 400;
+    .col-gauche {
+        width: 15%;
+        height: 100vh;
+        box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.3);
+        transform: translateX(-350px);
+        transition: all 0.5s ease-in-out;
+        text-transform: uppercase;
+
+        &.fixed {
+            transform: translateX(0);
+            position: sticky;
+            top: 0;
+            bottom: 0;
         }
 
-        .button-div {
-            background-image: linear-gradient(
-                50deg,
-                hsl(205deg 44% 75%) 0%,
-                hsl(339deg 17% 68%) 53%,
-                hsla(0, 40%, 63%, 0.459) 100%
-              );
-            padding: 0.25rem;
-            border-radius: 18px;
+        .nav-list {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
 
-            button {
-                padding: 0.3rem 2rem;
-                font-weight: 500;
-                border-radius: 15px;
-                border: none;
-                box-shadow: 0px 10px 8px -3px rgba(0,0,0,0.3);
+            .nav-item {
+                text-decoration: none;
+                color: black;
+                cursor: pointer;
+                transition: all 0.5s ease;
             }
 
-            button:hover {
-                box-shadow: inset 0px 10px 8px -3px rgba(0,0,0,0.3);
-             }
+            .nav-item:hover {
+                    transform: translateX(15px);
+                    text-decoration: underline;
+                }
         }
-
     }
 
-}
+    .col-droite {
+        width: 80%;
+        transform: translateX(-60px);
+        transition: all 0.46s ease-in-out;
 
+        &.fixed {
+            transform: translateX(0);
+
+        }
+    
+
+        .categorie-container {
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 50%;
+            margin: 5rem auto;
+            padding: 2rem 3rem;
+            min-width: 407px;
+            max-height: 650px;
+            overflow: scroll;
+            overflow-x: hidden;
+
+            h2 {
+                font-family: Cinzel;
+                font-weight: 400;
+                font-size: 30px;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+
+            .prestation {
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+
+                padding: 2rem 1.5rem;
+                border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+
+                @media screen and (max-width: 1250px) {
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: space-between;
+
+                }
+
+
+                .infos-div {
+                    display: flex;
+                    align-items: center;
+                    gap: 2rem;
+                    font-weight: 400;
+                }
+
+
+                .prestation-infos {
+                    display: flex;
+                    align-items: center;
+
+                    justify-content: space-between;
+                    font-weight: 400;
+                    gap: 2rem;
+
+                    @media screen and (max-width: 1250px) {
+                        width: 100%;
+                    }
+                }
+
+                .button-div {
+                    background-image: linear-gradient(50deg,
+                            hsl(205deg 44% 75%) 0%,
+                            hsl(339deg 17% 68%) 53%,
+                            hsla(0, 40%, 63%, 0.459) 100%);
+                    padding: 0.25rem;
+                    border-radius: 18px;
+
+                    @media screen and (max-width: 1250px) {
+                        align-self: flex-end;
+                    }
+
+                    button {
+                        padding: 0.3rem 2rem;
+                        font-weight: 500;
+                        border-radius: 15px;
+                        border: none;
+                        box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+                        transition: all 0.5s;
+                    }
+
+                    button:hover {
+                        box-shadow: inset 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+                    }
+                }
+            }
+        }
+    }
+}

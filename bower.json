@@ -1,0 +1,20 @@
+{
+  "name": "bower",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Aurelien David <aurelien.david.pro@outlook.fr>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/AxelDemeyere/maison-namaste-fil-rouge",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "firebaseui": "^6.1.0"
+  }
+}

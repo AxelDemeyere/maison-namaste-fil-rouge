@@ -1,6 +1,7 @@
 import Carousel from '../components/Carousel';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
+import Modal from '../components/Modal';
 import '../stylesheets/App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Carousel />
       <SearchBar />
+      <Modal />
     </div> 
   );
 }

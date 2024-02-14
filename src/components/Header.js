@@ -18,6 +18,7 @@ function Header() {
                     <li onClick={() => navigate('/rendez-vous')}>Rendez-vous</li>
                     <li onClick={() => navigate('/contact')}>Contact</li>
                     <li onClick={() => navigate('/carte-cadeau')}>Carte cadeau</li>
+                    <li onClick={() => navigate('/mon-compte')}>Mon compte</li>
                 </ul>
             </nav>
         </>

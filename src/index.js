@@ -10,6 +10,7 @@ import Contact from './routes/Contact';
 import CarteCadeau from './routes/CarteCadeau';
 import NotFound from './routes/NotFound';
 import About from './routes/About';
+import MonCompte from './routes/MonCompte';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +23,7 @@ root.render(
         <Route path={'/rendez-vous'} element={<RendezVous />} />
         <Route path={'/contact'} element={<Contact />} />
         <Route path={'/carte-cadeau'} element={<CarteCadeau />} />
+        <Route path={'/mon-compte'} element={<MonCompte />} />
         <Route path={'/*'} element={<NotFound />} />
       </Routes>
     </BrowserRouter>

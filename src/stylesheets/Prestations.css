@@ -1,6 +1,9 @@
 .main-categories {
     display: flex;
 
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 
     .col-gauche {
         width: 15%;
@@ -9,6 +12,11 @@
         transform: translateX(-350px);
         transition: all 0.5s ease-in-out;
         text-transform: uppercase;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: row;
+            font-size: 10px;
+        }
 
         &.fixed {
             transform: translateX(0);
@@ -22,6 +30,7 @@
             display: flex;
             flex-direction: column;
             gap: 5rem;
+
 
             .nav-item {
                 text-decoration: none;
@@ -58,8 +67,11 @@
             padding: 2rem 3rem;
             min-width: 407px;
             max-height: 650px;
+
             overflow: scroll;
             overflow-x: hidden;
+            scrollbar-width: thin;
+            
 
             h2 {
                 font-family: Cinzel;

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, ConfigProvider, Space } from 'antd';
 import { createStyles, useTheme } from 'antd-style';
 
@@ -20,19 +20,16 @@ const useStyle = createStyles(({ token }) => ({
     border: '1px solid #333',
   },
 }));
-
-const Modal: FC = () => {
+const Modal = () => {
   const [isModalOpen, setIsModalOpen] = useState([false, false]);
   const { styles } = useStyle();
   const token = useTheme();
-
-  const toggleModal = (idx: number, target: boolean) => {
+  const toggleModal = (idx, target) => {
     setIsModalOpen((p) => {
       p[idx] = target;
       return [...p];
     });
   };
-
   const classNames = {
     body: styles['my-modal-body'],
     mask: styles['my-modal-mask'],
@@ -40,7 +37,6 @@ const Modal: FC = () => {
     footer: styles['my-modal-footer'],
     content: styles['my-modal-content'],
   };
-
   const modalStyles = {
     header: {
       borderLeft: `5px solid ${token.colorPrimary}`,
@@ -61,7 +57,6 @@ const Modal: FC = () => {
       boxShadow: '0 0 30px #999',
     },
   };
-
   return (
     <>
       <Space>
@@ -106,5 +101,4 @@ const Modal: FC = () => {
     </>
   );
 };
-
 export default Modal;

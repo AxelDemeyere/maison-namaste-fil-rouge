@@ -1,111 +1,131 @@
 import React, { useState } from 'react';
+import { Button, Col, DatePicker, Form, Input, Row, Select, Space, Drawer } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 
-const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    birthDate: '',
-    address: '',
-    email: '',
-    gender: '',
-  });
-  const [errors, setErrors] = useState({});
+const { Option } = Select;
 
-  const validateForm = () => {
-    let formIsValid = true;
-    let errors = {};
+function RegistrationForm() {
+  const [open, setOpen] = useState(false);
 
-    if (!formData.firstName) {
-      formIsValid = false;
-      errors['firstName'] = 'Prénom requis';
-    }
-
-    if (!formData.lastName) {
-      formIsValid = false;
-      errors['lastName'] = 'Nom requis';
-    }
-
-    if (!formData.birthDate) {
-      formIsValid = false;
-      errors['birthDate'] = 'Date de naissance requise';
-    }
-
-    if (!formData.email) {
-      formIsValid = false;
-      errors['email'] = 'Email requis';
-    } else if (!formData.email.match(/\S+@\S+\.\S+/)) {
-      formIsValid = false;
-      errors['email'] = 'Email non valide';
-    }    
-
-    if (!formData.gender) {
-      formIsValid = false;
-      errors['gender'] = 'Veuillez indiquer votre genre';
-    }
-
-    setErrors(errors);
-    return formIsValid;
+  const showDrawer = () => {
+    setOpen(true);
   };
 
-  const getAge = (birthDate) => {
-    const today = new Date();
-    const birth = new Date(birthDate);
-    let age = today.getFullYear() - birth.getFullYear();
-    const m = today.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-      age--;
-    }
-    return age;
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (validateForm()) {
-      console.log('Formulaire valide', formData);
-    } else {
-      console.log('Formulaire incomplet');
-    }
+  const onClose = () => {
+    setOpen(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Prénom :</label>
-        <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-        {errors.firstName && <div style={{color: 'red'}}>{errors.firstName}</div>}
-      </div>
-      <div>
-        <label>Nom :</label>
-        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-        {errors.lastName && <div style={{color: 'red'}}>{errors.lastName}</div>}
-      </div>
-      <div>
-        <label>Date de naissance :</label>
-        <input type="date" name="birthDate" value={formData.birthDate} onChange={handleChange} />
-        {errors.birthDate && <div style={{color: 'red'}}>{errors.birthDate}</div>}
-      </div>
-      <div>
-        <label>Email :</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} />
-        {errors.email && <div style={{color: 'red'}}>{errors.email}</div>}
-      </div>
-      <div>
-        <label>Genre :</label>
-        <select name="gender" value={formData.gender} onChange={handleChange}>
-          <option value="female">Femme</option>
-          <option value="male">Homme</option>
-
-        </select>
-        {errors.gender && <div style={{color: 'red'}}>{errors.gender}</div>}
-      </div>
-      <button type="submit">Register</button>
-    </form>
+    <div className="Registration">
+      <Button type="primary" onClick={showDrawer} icon={<PlusOutlined />}>
+      Inscription | Connexion
+      </Button>
+      <Drawer
+        title="Compte client"
+        width={720}
+        onClose={onClose}
+        open={open}
+        bodyStyle={{ paddingBottom: 80 }}
+        extra={
+          <Space>
+            <Button onClick={onClose}>Quitter</Button>
+            <Button onClick={onClose} type="primary">
+              Soumettre
+            </Button>
+          </Space>
+        }
+      >
+        <Form layout="vertical" hideRequiredMark>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                name="firstName"
+                label="Prénom"
+                rules={[{ required: true, message: 'Veuillez entrer votre prénom' }]}
+              >
+                <Input placeholder="Entrez votre prénom" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="lastName"
+                label="Nom"
+                rules={[{ required: true, message: 'Veuillez entrer votre nom' }]}
+              >
+                <Input placeholder="Entrez votre nom" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                name="dateOfBirth"
+                label="Date de naissance"
+                rules={[{ required: true, message: 'Veuillez sélectionner votre date de naissance' }]}
+              >
+                <DatePicker style={{ width: '100%' }} />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="gender"
+                label="Genre"
+                rules={[{ required: true, message: 'Veuillez sélectionner votre genre' }]}
+              >
+                <Select placeholder="Sélectionnez votre genre">
+                <Option value="female">Femme</Option>
+                  <Option value="male">Homme</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Form.Item
+                name="email"
+                label="Email"
+                rules={[
+                  { required: true, message: 'Veuillez entrer votre email' },
+                  { type: 'email', message: 'L\'adresse email n\'est pas valide' },
+                ]}
+              >
+                <Input placeholder="Entrez votre email" />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="phoneNumber"
+                label="Numéro de téléphone"
+                rules={[{ required: true, message: 'Veuillez entrer votre numéro de téléphone' }]}
+              >
+                <Input placeholder="Entrez votre numéro de téléphone" />
+              </Form.Item>
+            </Col>
+          </Row>
+                  <Row gutter={16}>
+          <Col span={12}>
+            <Form.Item
+              name="codePostal"
+              label="Code Postal"
+              rules={[{ required: true, message: 'Veuillez entrer votre code postal' }]}
+            >
+              <Input placeholder="Code Postal" />
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item
+              name="ville"
+              label="Ville"
+              rules={[{ required: true, message: 'Veuillez entrer votre ville' }]}
+            >
+              <Input placeholder="Ville" />
+            </Form.Item>
+          </Col>
+        </Row>
+        </Form>
+      </Drawer>
+    </div>
   );
-};
+}
 
 export default RegistrationForm;

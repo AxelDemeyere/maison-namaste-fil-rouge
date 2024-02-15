@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
+import SearchBar from "../components/SearchBar";
 
 function Prestations() {
-    const [categories, setCategories] = useState([]);
+
+    const [categories, setCategories] = useState({
+        filtered: [],
+        list: []
+    });
     const [fixedColumn, setFixedColumn] = useState(false);
 
     const getCategories = async () => {
         await fetch(`http://10.125.24.52:5000/categories`)
             .then(response => response.json())
             .then(json => {
-                setCategories(json);
+                setCategories({
+                    filtered: json,
+                    list: json
+                });
             })
     }
 
@@ -35,20 +43,22 @@ function Prestations() {
     return (
         <>
             <div className="main-categories">
-                <nav className={`col-gauche ${fixedColumn ? 'fixed' : ''}`}>
 
+                <nav className={`col-gauche ${fixedColumn ? 'fixed' : ''}`}>
                     <div className="nav-list">
-                        {categories.map(categorie => (
+                        {categories.filtered.map(categorie => (
                             <a className="nav-item" href={`#${categorie.name}`}>{categorie.name}</a>
                         ))}
-
                     </div>
                 </nav>
                 <div className={`col-droite ${fixedColumn ? 'fixed' : ''}`}>
-                    {categories.map(categorie => (
+                    <SearchBar categories={categories} setCategories={setCategories} />
+                    {categories.filtered.map(categorie => (
                         <div key={categorie._id} className="categorie-container" id={categorie.name}>
-                            <h2>{categorie.name}</h2>
-                            <p>{categorie.description}</p>
+                            <div className="header-categories">
+                                <h2>{categorie.name}</h2>
+                                <p>{categorie.description}</p>
+                            </div>
                             {categorie.prestations.map(prestation => (
                                 <div className="prestations-container" key={prestation._id}>
                                     <div className="prestation">

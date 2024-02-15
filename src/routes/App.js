@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Carousel />
-      <SearchBar />
+
 
       <main>
         {categories.map((categorie, index) => (

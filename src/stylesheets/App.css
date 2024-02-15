@@ -1,3 +1,4 @@
+/* Feuille de style */ 
 @import 'Header.css';
 @import 'SearchBar.css';
 @import 'Carousel.css';
@@ -6,8 +7,12 @@
 @import 'Accueil.css';
 @import 'Contact.css';
 
+/* Fonts */ 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Icons */ 
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/arrow-up.css');
 
 * {
   margin: 0;

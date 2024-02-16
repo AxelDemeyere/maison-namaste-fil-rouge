@@ -12,7 +12,7 @@ function App() {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    await fetch(`http://10.125.24.52:5000/categories`)
+    await fetch(`http://192.168.1.59:5000/categories`)
       .then(response => response.json())
       .then(json => {
         setCategories(json);

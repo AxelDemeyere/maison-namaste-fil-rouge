@@ -1,0 +1,208 @@
+footer {
+    background-image: linear-gradient(to top right, #a2c3db, #fedddd);
+    padding: 2rem 2rem 0 2rem;
+
+    .footer-main-container {
+        display: flex;
+        background-color: white;
+        padding: 2rem;
+        border-radius: 15px;
+
+         @media screen and (max-width: 768px) {
+                display: flex;
+                flex-direction: column;
+
+            }
+        
+
+        .footer-main-container-left {
+            flex-basis: 20%;
+
+            @media screen and (max-width: 768px) {
+                display: flex;
+                justify-content: center;
+                padding-bottom: 0.5rem;
+            }
+
+        .footer-logo {
+            width: fit-content;
+
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+
+            img {
+                width: 50%;
+                padding: 2rem;
+            }
+        }
+
+
+            
+        .footer-reseaux {
+            display: flex;
+
+            gap: 2rem;
+            padding: 0 2rem;
+            color: white;
+            font-size: 25px;
+            width: fit-content;
+
+            @media screen and (max-width: 768px) {
+                padding: 0 0 1rem 0;
+            }
+
+            
+            
+            .footer-icon {
+                background-color: black !important;
+                padding: 0.5rem;
+                border-radius: 100%;
+            }
+
+            .facebook {
+                padding: 0.5rem 0.8rem;
+            }
+
+        }
+        }
+
+
+        .footer-main-container-right {
+            display: flex;
+            justify-content: flex-end;
+            gap: 25%;
+            flex-basis: 80%;
+
+            width: 80%;
+
+            @media screen and (max-width: 768px) {
+                justify-content: center;
+                width: 100%;
+            }
+
+            h3 {
+                font-size: 12px;
+                color: grey;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+                font-weight: 500;
+            }
+
+            .footer-informations {
+                @media screen and (max-width: 768px) {
+                    display: none;
+                }
+            }
+
+            .footer-prestations {
+                @media screen and (max-width: 768px) {
+                    display: none;
+                }
+            }
+    
+            .footer-contact {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                text-align: end;
+
+                @media screen and (max-width: 768px) {
+                    align-items: center;
+                    text-align: center;
+                }
+
+                .tel-button {
+                    background-color: black;
+                    color: white;
+                    padding: 0.4rem 1.5rem;
+                    border-radius: 15px;
+                    font-size: 13px;
+                    margin: 0 0 1rem 0;
+                    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+                    cursor: pointer;
+                }
+
+                p {
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+
+            }
+        }
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
+
+        .footer-bottom-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-basis: 45%;
+
+            color: white;
+            font-size: 55px;
+            font-weight: 700;
+            
+            line-height: 55px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 20px;
+                line-height: 20px;
+                padding-bottom: 0.5rem;
+            }
+            
+            span {
+                margin-top: 2rem;
+                font-size: 8px;
+            }
+
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 45%;
+
+            @media screen and (max-width: 768px) {
+                display: block;
+                width: 100%;
+                padding-bottom: 0.5rem ;
+            }
+
+            label {
+                color: white;
+                font-size: 15px;
+                padding-bottom: 1rem;
+                cursor: pointer;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 10px;
+                    
+                }
+            }
+            input {
+                background-color: inherit;
+                border: solid 1px white;
+                border-radius: 10px;
+                padding: 1rem;
+
+                @media screen and (max-width: 768px) {
+                    width: 90%;
+                }
+                
+                &::placeholder {
+                    color: white;
+                }
+            }
+        }
+    }
+}

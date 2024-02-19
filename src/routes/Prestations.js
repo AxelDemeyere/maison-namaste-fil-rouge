@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 
 function Prestations() {
@@ -39,6 +40,21 @@ function Prestations() {
     }
   };
 
+  //Ajouter prestation au panier
+  const navigate = useNavigate();
+  const [cart, setCart] = useState({
+    prestations: [],
+    total: 0,
+  });
+  const addToCart = (prestation) => {
+    const newTotal = cart.total + prestation.price;
+    setCart((prevCart) => ({
+      prestations: [...prevCart.prestations, prestation],
+      total: Math.round(newTotal * 100) / 100,
+    }));
+    navigate("/rendez-vous", { ...cart });
+  };
+
   return (
     <>
       <div className="main-categories">
@@ -73,7 +89,9 @@ function Prestations() {
                         <span>{prestation.time}min</span>
                       </div>
                       <div className="button-div">
-                        <button>Ajouter</button>
+                        <button onClick={() => addToCart(prestation)}>
+                          Ajouter
+                        </button>
                       </div>
                     </div>
                   </div>

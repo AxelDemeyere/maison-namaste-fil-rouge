@@ -1,63 +1,86 @@
 .container {
+  display: flex;
+  height: fit-content;
+
+  @media screen and (max-width: 768px) {
+    width: 400px;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 15px;
+    margin-top: 5rem;
+  }
+
+  .content {
+    width: 50%;
     display: flex;
-    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
 
-    .content {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
+  h2 {
+    font-family: Cinzel;
+    font-weight: 500;
+    font-size: 35px;
+  }
+
+  .button-div {
+    background-image: linear-gradient(
+      50deg,
+      hsl(205deg 44% 75%) 0%,
+      hsl(339deg 17% 68%) 53%,
+      hsla(0, 40%, 63%, 0.459) 100%
+    );
+    padding: 0.25rem;
+    border-radius: 18px;
+
+    @media screen and (max-width: 1250px) {
     }
 
-    h2 {
-        font-family: Cinzel;
-        font-weight: 500;
-        font-size: 35px;
+    button {
+      padding: 0.3rem 2rem;
+      font-weight: 500;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s ease;
     }
 
-    .button-div {
-        background-image: linear-gradient(50deg,
-                hsl(205deg 44% 75%) 0%,
-                hsl(339deg 17% 68%) 53%,
-                hsla(0, 40%, 63%, 0.459) 100%);
-        padding: 0.25rem;
-        border-radius: 18px;
-
-        @media screen and (max-width: 1250px) {
-            align-self: flex-end;
-        }
-
-        button {
-            padding: 0.3rem 2rem;
-            font-weight: 500;
-            border-radius: 15px;
-            border: none;
-            box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s;
-        }
-
-        button:hover {
-            box-shadow: inset 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
-        }
+    button:hover {
+      box-shadow: inset 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
     }
+  }
 }
 
 .img-container {
-    width: 50%;
-    
-    img {
-        display: block;
-        width: 100%;
-        height: 535px;
-    }
+  width: 50%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 535px;
+  }
 }
 
 .image-left {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .image-right {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.image-left,
+.image-right {
+  @media screen and (max-width: 768px) {
+    text-align: center;
+    box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 5rem;
+    padding: 2rem;
+  }
 }

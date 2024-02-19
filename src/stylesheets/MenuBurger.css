@@ -28,7 +28,8 @@
 }
 
 .menu-burger:hover .middle-bar {
-  transform: rotate(45deg) translateY(5px) translateX(-5px);
+  /* transform: rotate(45deg) translateY(5px) translateX(-5px); */
+  transform: scale(0%);
 }
 
 .menu-burger:hover .bottom-bar {

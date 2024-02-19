@@ -1,0 +1,36 @@
+.menu-burger {
+  height: 15px;
+  width: 30px;
+  position: relative;
+
+  .bar {
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    position: absolute;
+    transition: transform 0.3s ease;
+  }
+
+  .top-bar {
+    top: 0%;
+  }
+
+  .middle-bar {
+    top: 50%;
+  }
+  .bottom-bar {
+    top: 100%;
+  }
+}
+
+.menu-burger:hover .top-bar {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.menu-burger:hover .middle-bar {
+  transform: rotate(45deg) translateY(5px) translateX(-5px);
+}
+
+.menu-burger:hover .bottom-bar {
+  transform: rotate(-45deg) translateY(-10px);
+}

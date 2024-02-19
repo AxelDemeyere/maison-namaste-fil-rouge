@@ -1,74 +1,81 @@
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    img {
-        height: 250px;
-        width: auto;
-        padding-bottom: 1rem;
-        cursor: pointer;
-    }
+  img {
+    height: 250px;
+    width: auto;
+    padding-bottom: 1rem;
+    cursor: pointer;
+  }
 }
 
 .nav-header {
-    width: 100%;
-    margin: 0 5rem 0rem 0;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 0 5rem 0rem 0;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
+  .nav-desktop {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
 
-    ul {
-        padding: 2rem;
-        display: flex;
-        justify-content: space-evenly;
-        list-style: none;
-
-        @media screen and (max-width: 768px) {
-            display: unset;
-        }
-
-        li {
-            font-weight: 500;
-            text-transform: uppercase;
-            transition: all 0.5s ease;
-        }
-
-        li:hover {
-            cursor: pointer;
-            transform: scale(1.1);
-            text-decoration: underline;
-            font-weight: bold;
-        }
+    @media screen and (max-width: 768px) {
+      display: none;
     }
+
+    li {
+      font-weight: 500;
+      text-transform: uppercase;
+      transition: all 0.5s ease;
+    }
+
+    li:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  }
+
+  .nav-mobile {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+  }
 }
 
 main {
-    position: relative;
+  position: relative;
 
-    a {
-        color: black;
+  a {
+    color: black;
+  }
+
+  .arrow-up {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 35px;
+    height: 35px;
+    fill: none;
+    padding: 0.5rem;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    transition: all 400ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+
+    &:hover {
+      transform: scale(1.5);
     }
 
-    .arrow-up {
-        position: fixed;
-        bottom: 50px;
-        right: 50px;
-        width: 35px;
-        height: 35px;
-        fill: none;
-        padding: 0.5rem;
-        box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-        border-radius: 7px;
-        transition: all 400ms cubic-bezier(.47,1.64,.41,.8);
-
-        &:hover {
-            transform: scale(1.5);
-        }
-
-        @media screen and (max-width: 768px) {
-            display: none;
-        }
+    @media screen and (max-width: 768px) {
+      display: none;
     }
-
-
+  }
 }

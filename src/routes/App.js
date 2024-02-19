@@ -1,36 +1,30 @@
-// App.js
 import React, { useState } from 'react';
-import { Drawer } from 'antd';
 import Carousel from '../components/Carousel';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import RegistrationForm from '../routes/RegistrationForm';
+import RegistrationForm from './RegistrationForm';
+import '../stylesheets/App.css';
 
 function App() {
-  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
 
   const showDrawer = () => {
-    setDrawerVisible(true);
+    setIsDrawerVisible(true);
   };
 
   const onCloseDrawer = () => {
-    setDrawerVisible(false);
+    setIsDrawerVisible(false);
   };
 
   return (
-    <div className="App">
+    <div>
       <Header onMonCompteClick={showDrawer} />
       <Carousel />
       <SearchBar />
-      <Drawer
-        title="Mon compte"
-        width={720}
-        onClose={onCloseDrawer}
-        visible={drawerVisible}
-        placement="right"
-      >
-        <RegistrationForm />
-      </Drawer>
+      <RegistrationForm 
+        isOpen={isDrawerVisible} 
+        onClose={onCloseDrawer} 
+      />
     </div>
   );
 }

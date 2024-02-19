@@ -1,8 +1,9 @@
-import logoT from '../img/logo-transparence.png'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import logoT from '../img/logo-transparence.png';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../stylesheets/Header.css';
 
-function Header() {
+function Header({ onMonCompteClick }) {
 
     const navigate = useNavigate()
 
@@ -18,7 +19,7 @@ function Header() {
                     <li onClick={() => navigate('/rendez-vous')}>Rendez-vous</li>
                     <li onClick={() => navigate('/contact')}>Contact</li>
                     <li onClick={() => navigate('/carte-cadeau')}>Carte cadeau</li>
-                    <li onClick={() => navigate('/mon-compte')}>Mon compte</li>
+                    <li onClick={onMonCompteClick}>Mon compte</li>
                 </ul>
             </nav>
         </>

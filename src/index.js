@@ -10,8 +10,10 @@ import Contact from './routes/Contact';
 import CarteCadeau from './routes/CarteCadeau';
 import NotFound from './routes/NotFound';
 import About from './routes/About';
-import MonCompte from './routes/MonCompte';
+import Login from './routes/Login';
 
+const registerRouter = require('../routes/Register')
+app.use('/api', registerRouter)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,11 +26,10 @@ root.render(
         <Route path={'/rendez-vous'} element={<RendezVous />} />
         <Route path={'/contact'} element={<Contact />} />
         <Route path={'/carte-cadeau'} element={<CarteCadeau />} />
-        <Route path={'/mon-compte'} element={<MonCompte />} />
+        <Route path={'/mon-compte'} element={<Login />} />
         <Route path={'/*'} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-
   </React.StrictMode>
 );
 

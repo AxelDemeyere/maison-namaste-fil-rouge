@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Cart from "../components/Cart";
 import SearchBar from "../components/SearchBar";
 
 function Prestations() {
+  // Definir les states
   const [categories, setCategories] = useState({
     filtered: [],
     list: [],
   });
   const [fixedColumn, setFixedColumn] = useState(false);
 
+  //Appel API
   const getCategories = async () => {
     await fetch(`http://10.125.24.52:5000/categories`)
       .then((response) => response.json())
@@ -22,13 +24,13 @@ function Prestations() {
 
   useEffect(() => {
     getCategories();
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  // Definir à quelle hauteur la navbar va translate
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     const threshold = 340;
@@ -40,23 +42,44 @@ function Prestations() {
     }
   };
 
-  //Ajouter prestation au panier
-  const navigate = useNavigate();
+  // State du panier
   const [cart, setCart] = useState({
     prestations: [],
     total: 0,
   });
+
+  //Ajouter prestation au panier
   const addToCart = (prestation) => {
+    const newPrestation = [...cart.prestations, prestation];
     const newTotal = cart.total + prestation.price;
-    setCart((prevCart) => ({
-      prestations: [...prevCart.prestations, prestation],
+    setCart({
+      prestations: newPrestation,
       total: Math.round(newTotal * 100) / 100,
-    }));
-    navigate("/rendez-vous", { ...cart });
+    });
+  };
+
+  //Retirer une prestation du panier
+  const removeFromCart = (id) => {
+    const updatedPrestations = cart.prestations.filter(
+      (prestation) => prestation._id !== id
+    );
+    const updatedTotal = updatedPrestations.reduce(
+      (acc, curr) => acc + curr.price,
+      0
+    );
+    setCart({
+      prestations: updatedPrestations,
+      total: Math.round(updatedTotal * 100) / 100,
+    });
   };
 
   return (
     <>
+      <Cart
+        prestations={cart.prestations}
+        total={cart.total}
+        removeFromCart={removeFromCart}
+      />
       <div className="main-categories">
         <nav className={`col-gauche ${fixedColumn ? "fixed" : ""}`}>
           <div className="nav-list">

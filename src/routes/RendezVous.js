@@ -1,15 +1,28 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Cart from "../components/Cart";
 
-function RendezVous({ ...cart }) {
-  console.log(cart);
+function RendezVous() {
+  const location = useLocation();
+  const [cart, setCart] = useState({
+    prestations: [],
+    total: 0,
+  });
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const cartParam = searchParams.get("cart");
+
+    if (cartParam) {
+      const decodedCart = JSON.parse(decodeURIComponent(cartParam));
+      setCart(decodedCart);
+    }
+  }, [location]);
+
   return (
     <>
-      <Cart prestations={cart} />
-      <div>
-        {/* {cart.map((prestation) => {
-          return <div key={prestation.id}>{prestation.name}</div>;
-        })} */}
-      </div>
+      <Cart prestation={cart.prestations} total={cart.total} />
+      <p> {cart.prestations}</p>
     </>
   );
 }

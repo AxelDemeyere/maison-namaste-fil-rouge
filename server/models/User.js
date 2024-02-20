@@ -1,28 +1,27 @@
-const mongoose = require('mongoose')
-const Joi = require('joi')
+const mongoose = require('mongoose');
+const Joi = require('joi');
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        min: 3,
-        max: 100
+        minlength: 3,
+        maxlength: 100
     },
     email: {
         type: String,
         required: true,
         unique: true,
-        min: 5,
-        max: 255
+        minlength: 5,
+        maxlength: 255
     },
     password: {
         type: String,
         required: true,
-        min: 8,
-        max: 100
-
+        minlength: 8,
+        maxlength: 100
     }
-})
+});
 
 function validateUser(user) {
     const schema = Joi.object({

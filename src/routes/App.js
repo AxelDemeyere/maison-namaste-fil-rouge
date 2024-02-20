@@ -6,25 +6,17 @@ import RegistrationForm from './RegistrationForm';
 import '../stylesheets/App.css';
 
 function App() {
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-
-  const showDrawer = () => {
-    setIsDrawerVisible(true);
-  };
-
-  const onCloseDrawer = () => {
-    setIsDrawerVisible(false);
-  };
+  const [isRegistrationFormOpen, setIsRegistrationFormOpen] = useState(false);
 
   return (
     <div>
-      <Header onMonCompteClick={showDrawer} />
+    <Header onCompteClientClick={() => setIsRegistrationFormOpen(true)} />
+      <RegistrationForm 
+        isOpen={isRegistrationFormOpen} 
+        onClose={() => setIsRegistrationFormOpen(false)}
+        />
       <Carousel />
       <SearchBar />
-      <RegistrationForm 
-        isOpen={isDrawerVisible} 
-        onClose={onCloseDrawer} 
-      />
     </div>
   );
 }

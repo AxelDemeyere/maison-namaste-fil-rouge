@@ -12,9 +12,6 @@ import NotFound from './routes/NotFound';
 import About from './routes/About';
 import Login from './routes/Login';
 
-const registerRouter = require('../routes/Register')
-app.use('/api', registerRouter)
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

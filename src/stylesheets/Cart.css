@@ -26,6 +26,7 @@
   .prestations-list {
     .prestation {
       display: flex;
+      gap: 1rem;
     }
 
     button {
@@ -76,6 +77,10 @@
       border: none;
       box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
       transition: all 0.5s;
+    }
+
+    button:hover {
+      box-shadow: inset 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
     }
   }
 

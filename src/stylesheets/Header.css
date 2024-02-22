@@ -1,3 +1,14 @@
+.settings-icon {
+  margin: 0.3rem;
+  font-size: 150%;
+  cursor: pointer;
+  color: white;
+}
+
+.settings-icon:hover {
+  color: black;
+}
+
 header {
   display: flex;
   flex-direction: column;

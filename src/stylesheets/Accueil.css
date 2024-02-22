@@ -16,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 2rem;
   }
 
@@ -34,9 +35,6 @@
     );
     padding: 0.25rem;
     border-radius: 18px;
-
-    @media screen and (max-width: 1250px) {
-    }
 
     button {
       padding: 0.3rem 2rem;

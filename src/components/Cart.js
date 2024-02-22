@@ -1,6 +1,6 @@
 import React from "react";
 
-function Cart({ prestations = [], total, removeFromCart }) {
+function Cart({ prestations = [], total, removeFromCart, time }) {
   const listPrestations = prestations.map((prestation) => {
     return (
       <>
@@ -35,6 +35,8 @@ function Cart({ prestations = [], total, removeFromCart }) {
       <div className="prestations-container">
         <div className="prestations-list">{listPrestations}</div>
         <div className="prestations-total">
+          {time}
+          <p> minutes</p>
           <p>Total : </p>
           {total}€
         </div>

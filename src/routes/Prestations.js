@@ -45,6 +45,7 @@ function Prestations() {
   // State du panier
   const [cart, setCart] = useState({
     prestations: [],
+    time: 0,
     total: 0,
   });
 
@@ -52,9 +53,11 @@ function Prestations() {
   const addToCart = (prestation) => {
     const newPrestation = [...cart.prestations, prestation];
     const newTotal = cart.total + prestation.price;
+    const newTime = cart.time + prestation.time;
     setCart({
       prestations: newPrestation,
       total: Math.round(newTotal * 100) / 100,
+      time: newTime,
     });
   };
 
@@ -67,9 +70,15 @@ function Prestations() {
       (acc, curr) => acc + curr.price,
       0
     );
+    const updatedTime = updatedPrestations.reduce(
+      (acc, curr) => acc + curr.time,
+      0
+    );
+
     setCart({
       prestations: updatedPrestations,
       total: Math.round(updatedTotal * 100) / 100,
+      time: Math.round(updatedTime),
     });
   };
 
@@ -78,13 +87,18 @@ function Prestations() {
       <Cart
         prestations={cart.prestations}
         total={cart.total}
+        time={cart.time}
         removeFromCart={removeFromCart}
       />
       <div className="main-categories">
         <nav className={`col-gauche ${fixedColumn ? "fixed" : ""}`}>
           <div className="nav-list">
             {categories.filtered.map((categorie) => (
-              <a className="nav-item" href={`#${categorie.name}`}>
+              <a
+                key={categorie._id}
+                className="nav-item"
+                href={`#${categorie.name}`}
+              >
                 {categorie.name}
               </a>
             ))}

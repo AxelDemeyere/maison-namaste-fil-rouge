@@ -23,7 +23,6 @@ function App() {
   return (
     <div className="App">
       <Carousel />
-
       <main>
         {categories.map((categorie, index) => (
           <div

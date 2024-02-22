@@ -1,3 +1,5 @@
+import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import logoT from "../img/logo-transparence.png";
 import MenuBurger from "./MenuBurger";
@@ -7,6 +9,7 @@ export default function Header() {
 
   return (
     <>
+      <FontAwesomeIcon icon={faGear} onClick={() => navigate("/admin")} className="settings-icon" />
       <header>
         <img onClick={() => navigate("/")} src={logoT} alt="" />
       </header>

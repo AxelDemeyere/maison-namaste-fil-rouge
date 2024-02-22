@@ -11,6 +11,7 @@ function SearchBar({ categories, setCategories }) {
 
   const handleChange = (e) => {
     setValue(e.target.value);
+    console.log(value);
 
     let filterList = [];
     categories.list.forEach((category) => {

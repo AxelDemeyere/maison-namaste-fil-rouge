@@ -9,6 +9,8 @@
 @import "Footer.css";
 @import "MenuBurger.css";
 @import "Cart.css";
+@import "Admin.css";
+@import "Modal.css";
 
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");

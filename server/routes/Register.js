@@ -1,10 +1,10 @@
-const { User, validate } = require('../models/User');
+const { User, validateUser } = require('../models/User');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
-    const { error } = validate(req.body);
+    const { error } = validateUser(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     let user = await User.findOne({ email: req.body.email });
@@ -15,15 +15,22 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
         user = new User({
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            dateOfBirth: req.body.dateOfBirth,
             email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            gender: req.body.gender,
+            codePostal: req.body.codePostal,
+            ville: req.body.ville,
             password: hashedPassword,
         });
 
         await user.save();
         const result = {
             _id: user._id,
-            name: user.name,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
         };
 

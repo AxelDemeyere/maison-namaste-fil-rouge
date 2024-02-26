@@ -17,19 +17,17 @@ function RegistrationForm({ isOpen, onClose }) {
   const [ville, setVille] = useState([]);
   const [selectedVille, setSelectedVille] = useState('');
   const [activeTab, setActiveTab] = useState('inscription');
-  const [user, setUser] = useState([
-    {
-      firstName: "",
-      lastName: "",
-      dateOfBirth: "",
-      email: "",
-      phoneNumber: "",
-      gender: "",
-      codePostal: "",
-      ville: "",
-      password: ""
-    }
-  ])
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    email: "",
+    phoneNumber: "",
+    gender: "",
+    codePostal: "",
+    ville: "",
+    password: ""
+  });  
 
   const fetchVillesParCodePostal = async (code) => {
     try {
@@ -47,12 +45,12 @@ function RegistrationForm({ isOpen, onClose }) {
 
 
 
-  const handleChange = (e, fieldName) => {
+  const handleChange = (value, fieldName) => {
     setUser(prevUser => ({
       ...prevUser,
-      [fieldName]: e.target.value,
+      [fieldName]: value,
     }));
-  };
+  };  
   
 
 
@@ -71,8 +69,8 @@ function RegistrationForm({ isOpen, onClose }) {
   const handleSubmitInscription = () => {
     formInscription.validateFields()
       .then(values => {
-        axios.post('https://web.postman.co/workspace/My-Workspace~e242ac59-89f0-4a2d-8629-c496f58bd87f/request/33118927-1005b70d-9496-4e74-be6e-77aefaf987bf', values)
-          .then(response => {
+        axios.post('http://localhost:3000/api/users/register', values)
+            .then(response => {
             message.success('Inscription réussie !');
             formInscription.resetFields();
             onClose();
@@ -120,12 +118,12 @@ function RegistrationForm({ isOpen, onClose }) {
               <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item name="firstName" label="Prénom" rules={[{ required: true, message: 'Veuillez entrer votre prénom' }]}>
-                    <Input placeholder="Entrez votre prénom" onChange={(e) => handleChange(e, 'firstName')} />
+                    <Input placeholder="Entrez votre prénom" onChange={e => handleChange(e.target.value, 'firstName')} />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item name="lastName" label="Nom" rules={[{ required: true, message: 'Veuillez entrer votre nom' }]}>
-                    <Input placeholder="Entrez votre nom" onChange={(e) => handleChange(e, 'lastName')} />
+                    <Input placeholder="Entrez votre nom" onChange={e => handleChange(e.target.value, 'lastName')}  />
                   </Form.Item>
                 </Col>
               </Row>
@@ -137,7 +135,7 @@ function RegistrationForm({ isOpen, onClose }) {
                 </Col>
                 <Col span={12}>
                   <Form.Item name="gender" label="Genre" rules={[{ required: true, message: 'Veuillez sélectionner votre genre' }]}>
-                    <Select placeholder="Sélectionnez votre genre" onChange={(e) => handleChange(e, 'gender')} >
+                    <Select placeholder="Sélectionnez votre genre" onChange={value => handleChange(value, 'gender')} >
                       <Option value="female">Femme</Option>
                       <Option value="male">Homme</Option>
                     </Select>
@@ -147,12 +145,12 @@ function RegistrationForm({ isOpen, onClose }) {
               <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Veuillez entrer votre email' }, { type: 'email', message: 'L\'adresse email n\'est pas valide' }]}>
-                    <Input placeholder="Entrez votre email" onChange={(e) => handleChange(e, 'email')} />
+                    <Input placeholder="Entrez votre email" onChange={e => handleChange(e.target.value, 'email')} />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item name="phoneNumber" label="Numéro de téléphone" rules={[{ required: true, message: 'Veuillez entrer votre numéro de téléphone' }]}>
-                    <Input placeholder="Entrez votre numéro de téléphone" onChange={(e) => handleChange(e, 'phoneNumber')} />
+                    <Input placeholder="Entrez votre numéro de téléphone" onChange={e => handleChange(e.target.value, 'phoneNumber')} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -173,7 +171,7 @@ function RegistrationForm({ isOpen, onClose }) {
               <Row gutter={16}>
                 <Col span={24}>
                   <Form.Item name="password" label="Mot de passe" rules={[{ required: true, message: 'Veuillez entrer votre mot de passe' }, { min: 6, message: 'Le mot de passe doit contenir au moins 6 caractères' }]}>
-                    <Input.Password placeholder="Entrez votre mot de passe" onChange={(e) => handleChange(e, 'password')} />
+                    <Input.Password placeholder="Entrez votre mot de passe" onChange={e => handleChange(e.target.value, 'password')}  />
                   </Form.Item>
                 </Col>
               </Row>

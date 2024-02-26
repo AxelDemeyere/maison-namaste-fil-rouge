@@ -1,29 +1,7 @@
 .main-admin {
   display: flex;
   justify-content: center;
-
-  /* .col-gauche {
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-
-    .ul-admin {
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-      gap: 2rem;
-
-      li {
-        font-weight: 500;
-        text-transform: uppercase;
-        transition: all 0.5s ease;
-      }
-      li:hover {
-        cursor: pointer;
-        text-decoration: underline;
-        font-weight: bold;
-      }
-    }
-  } */
+  background-color: rgba(231, 238, 249, 0.5);
 
   .col-droite {
     display: flex;
@@ -38,21 +16,19 @@
       box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       padding: 2rem;
+      background-color: white;
 
       .container-inputs {
         display: flex;
         flex-direction: column;
-
         height: fit-content;
 
         .categorie-inputs,
         .prestations-inputs {
           display: flex;
           flex-direction: column;
-          width: fit-content;
         }
       }
-
       input,
       select,
       textarea {
@@ -60,7 +36,7 @@
         font-size: 1rem;
         resize: none;
         margin-bottom: 1rem;
-        width: 300px;
+        width: 95%;
       }
     }
 
@@ -68,6 +44,12 @@
       font-family: Cinzel;
       font-weight: 400;
       margin-bottom: 1rem;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 500;
+      padding-bottom: 1rem;
+      border-bottom: solid 1px rgba(128, 128, 128, 0.3);
+      margin-bottom: 3rem;
     }
   }
 
@@ -76,6 +58,7 @@
     justify-content: space-between;
     align-items: center;
     .button-div {
+      cursor: pointer;
       align-items: center;
       width: fit-content;
       margin: 1rem;
@@ -85,22 +68,30 @@
         hsl(339deg 17% 68%) 53%,
         hsla(0, 40%, 63%, 0.459) 100%
       );
-      padding: 0.25rem;
-      border-radius: 18px;
+      padding: 0.4rem;
+      border-radius: 25px;
 
       @media screen and (max-width: 1250px) {
         align-self: flex-end;
       }
 
+      a,
       button {
-        padding: 0.3rem 2rem;
-        font-weight: 500;
-        border-radius: 15px;
+        padding: 0.17rem 2rem;
+        font-weight: 400;
+        font-size: 15px;
+        font-family: Poppins;
+        text-decoration: none;
+        border-radius: 12px;
         border: none;
         box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+
+        background-color: #f0f0f0;
       }
 
+      a:hover,
       button:hover {
+        background-color: #f0f0f0;
         box-shadow: inset 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
       }
     }

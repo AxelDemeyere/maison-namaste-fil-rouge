@@ -1,75 +1,83 @@
-.contact {
+.main-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    width: fit-content;
-    margin: 5rem auto;
-    gap: 4rem;
-    padding: 3rem 4rem;
-
-    border-radius: 10px;
-    box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.3);
-
-    .contact-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        gap: 6rem;
-
-        h2 {
-            font-family: Cinzel;
-            align-self: center;
-            font-size: 40px;
-            text-transform: uppercase;
-        }
-        
-        h3 {
-            font-family: Cinzel;
-            font-size: 25px;
-            font-weight: 400;
-        }
-
-        a {
-
-            font-size: 20px;
-            color: black !important;
-            text-decoration: none;
-            
-           &:hover {
-            text-decoration: underline;
-           }
-        }
-    }
+  background-color: rgba(231, 238, 249, 0.5);
+  padding: 5rem 0;
 }
 
+.contact {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
+  width: fit-content;
 
-.map {
+  margin: auto;
+  gap: 4rem;
+  padding: 3rem 4rem;
+
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.3);
+  background-color: white;
+
+  .contact-container {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    
-    margin: 5rem auto;
-    padding: 3rem 4rem;
-    width: fit-content;
+    justify-content: space-between;
+    align-items: center;
 
-    border-radius: 10px;
-    box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.3);
+    gap: 6rem;
 
     h2 {
-        font-family: Cinzel;
-        align-self: center;
-        font-size: 40px;
-        text-transform: uppercase;
+      font-family: Cinzel;
+      align-self: center;
+      font-size: 40px;
+      text-transform: uppercase;
     }
 
-    iframe {
-        margin-top: 2rem;
-        align-self: center;
-        border: none;
-        border-radius: 7px;
+    h3 {
+      font-family: Cinzel;
+      font-size: 25px;
+      font-weight: 400;
     }
+
+    a {
+      font-size: 20px;
+      color: black !important;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.map {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+
+  margin: 0 auto;
+  padding: 3rem 4rem;
+  width: fit-content;
+
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.3);
+
+  h2 {
+    font-family: Cinzel;
+    align-self: center;
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+
+  iframe {
+    margin-top: 2rem;
+    align-self: center;
+    border: none;
+    border-radius: 7px;
+  }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ConfirmationMessage from "../components/ConfirmationMessage";
-import Modal from "../components/Modal";
+import ModalCategory from "../components/ModalCategory";
+import ModalPrestation from "../components/ModalPrestation";
 
 function Admin() {
   // States
@@ -15,6 +16,12 @@ function Admin() {
     description: "",
     category: "",
   });
+  const [newCategory, setNewCategory] = useState({
+    name: "",
+    description: "",
+    image: "",
+  });
+
   const [confirmationMessage, setConfirmationMessage] = useState("");
 
   // Récupération des données
@@ -41,6 +48,55 @@ function Admin() {
     getPrestations();
   }, []);
 
+  const buttonOpenPrest = useRef(null);
+  const buttonOpenCat = useRef(null);
+  const modalElementPrest = useRef(null);
+  const modalElementCat = useRef(null);
+
+  //CRUD CATEGORIES
+
+  //Ajouter une catégorie
+  const addCategory = async (e) => {
+    e.preventDefault();
+
+    const name = e.target.elements.name.value;
+    const description = e.target.elements.description.value;
+    const image = e.target.elements.image.value;
+
+    setNewCategory({
+      name,
+      description,
+      image,
+    });
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/categories`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            description,
+            image,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Echec de l'ajout d'une nouvelle catégorie");
+      }
+
+      getCategories();
+
+      setConfirmationMessage("La catégorie à été ajoutée avec succès");
+    } catch (error) {
+      console.error("Erreur de l'ajout :", error);
+    }
+    modalElementCat.current.style.display = "none";
+  };
   // Mettre à jour la catégorie
   const handleCategorySubmit = async (e) => {
     e.preventDefault();
@@ -80,55 +136,43 @@ function Admin() {
     }
   };
 
-  // Mettre à jour la prestation
-  const handlePrestationSubmit = async (e) => {
-    e.preventDefault();
-
-    const updatedPrestationName = e.target.elements.name.value;
-    const updatedPrestationDescription = e.target.elements.description.value;
-    const updatedPrestationPrice = e.target.elements.price.value;
-    const updatedPrestationTime = e.target.elements.time.value;
-
-    setSelectedPrestation({
-      ...selectedPrestation,
-      name: updatedPrestationName,
-      price: updatedPrestationPrice,
-      time: updatedPrestationTime,
-      description: updatedPrestationDescription,
-    });
-
+  const deleteCategory = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/prestations/${selectedPrestation._id}`,
+        `${process.env.REACT_APP_API_URL}/categories/${selectedCategory._id}`,
         {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: updatedPrestationName,
-            price: updatedPrestationPrice,
-            time: updatedPrestationTime,
-            description: updatedPrestationDescription,
-          }),
+          method: "DELETE",
         }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to update prestation");
+        throw new Error("Echec de la suppression de la catégorie");
       }
-
-      // Mettre à jour les catégories après la réussite de la requête
-      getPrestations();
+      getCategories();
     } catch (error) {
-      console.error("Error updating prestation:", error);
+      console.error("Erreur lors de la suppression de la catégorie:", error);
     }
   };
 
-  //Ajouter une prestation
-  const buttonOpen = useRef(null);
-  const modalElement = useRef(null);
+  // Mettre à jour en fonction de la catégorie selectionné dans le select
+  const handleChangeCategory = (e) => {
+    const categoryId = e.target.value;
+    const category = categories.find((cat) => cat._id === categoryId);
 
+    setSelectedCategory(category);
+  };
+
+  // handleChange pour mettre à jour les states associés aux catégories
+  const handleCategoryInputChange = (e, key) => {
+    setSelectedCategory({
+      ...selectedCategory,
+      [key]: e.target.value,
+    });
+  };
+
+  //CRUD PRESTATIONS
+
+  //Ajouter une prestation
   const addPrestation = async (e) => {
     e.preventDefault();
 
@@ -176,9 +220,53 @@ function Admin() {
     } catch (error) {
       console.error("Erreur de l'ajout :", error);
     }
-    modalElement.current.style.display = "none";
+    modalElementPrest.current.style.display = "none";
   };
+  // Mettre à jour la prestation
+  const handlePrestationSubmit = async (e) => {
+    e.preventDefault();
 
+    const updatedPrestationName = e.target.elements.name.value;
+    const updatedPrestationDescription = e.target.elements.description.value;
+    const updatedPrestationPrice = e.target.elements.price.value;
+    const updatedPrestationTime = e.target.elements.time.value;
+
+    setSelectedPrestation({
+      ...selectedPrestation,
+      name: updatedPrestationName,
+      price: updatedPrestationPrice,
+      time: updatedPrestationTime,
+      description: updatedPrestationDescription,
+    });
+
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/prestations/${selectedPrestation._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: updatedPrestationName,
+            price: updatedPrestationPrice,
+            time: updatedPrestationTime,
+            description: updatedPrestationDescription,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to update prestation");
+      }
+
+      // Mettre à jour les prestations après la réussite de la requête
+      getPrestations();
+    } catch (error) {
+      console.error("Error updating prestation:", error);
+    }
+  };
+  // Supprimer prestation
   const deletePrestation = async () => {
     try {
       const response = await fetch(
@@ -191,19 +279,10 @@ function Admin() {
       if (!response.ok) {
         throw new Error("Failed to delete prestation");
       }
-
       getPrestations();
     } catch (error) {
       console.error("Error deleting prestation:", error);
     }
-  };
-
-  // Mettre à jour en fonction de la catégorie selectionné dans le select
-  const handleChangeCategory = (e) => {
-    const categoryId = e.target.value;
-    const category = categories.find((cat) => cat._id === categoryId);
-
-    setSelectedCategory(category);
   };
 
   // Mettre à jour en fonction de la prestation selectionné dans le select
@@ -212,14 +291,6 @@ function Admin() {
     const prestation = prestations.find((prest) => prest._id === prestationId);
 
     setSelectedPrestation(prestation);
-  };
-
-  // handleChange pour mettre à jour les states associés aux catégories
-  const handleCategoryInputChange = (e, key) => {
-    setSelectedCategory({
-      ...selectedCategory,
-      [key]: e.target.value,
-    });
   };
 
   // handleChange pour mettre à jour les states associés aux prestations
@@ -282,13 +353,18 @@ function Admin() {
             </div>
 
             <div className="buttons-container">
-              <div className="button-div bot">
+              <div className="button-div update">
                 <button type="submit">Modifier</button>
               </div>
-              <div className="button-div">
-                <button type="submit" ref={buttonOpen}>
-                  <p>Ajouter une prestation</p>
-                </button>
+              <div className="button-div add">
+                <a href ref={buttonOpenCat}>
+                  Ajouter une catégorie
+                </a>
+              </div>
+              <div className="button-div delete">
+                <a href onClick={deleteCategory}>
+                  Supprimer
+                </a>
               </div>
             </div>
           </form>
@@ -300,14 +376,10 @@ function Admin() {
             <div className="top">
               <h2>Prestations</h2>
               <select name="" id="" onChange={handleChangePrestation}>
-                {categories.map((categorie) => {
-                  return categorie.prestations.map((prestation) => {
-                    return (
-                      <option key={prestation._id} value={prestation._id}>
-                        {prestation.name}
-                      </option>
-                    );
-                  });
+                {prestations.map((prestation) => {
+                  return (
+                    <option value={prestation._id}>{prestation.name}</option>
+                  );
                 })}
               </select>
               <div className="container-inputs">
@@ -315,7 +387,7 @@ function Admin() {
                   <label htmlFor="name-prestation">Nom de la prestation</label>
                   <input
                     type="text"
-                    id="name"
+                    id="name-prestation"
                     placeholder="Nom..."
                     value={selectedPrestation.name}
                     onChange={(e) => handlePrestationInputChange(e, "name")}
@@ -341,21 +413,19 @@ function Admin() {
                 </div>
                 <div className="prestations-inputs">
                   <label htmlFor="category">Appartient à la catégorie:</label>
-                  <select
-                    name="category"
-                    id="category"
-                    onChange={handleChangePrestation}
-                  >
-                    {/* <option value={selectedPrestation.category.name}>
-                      {selectedPrestation.category.name}
-                    </option> */}
+                  <select name="category" id="category">
+                    {categories.map((category) => {
+                      return (
+                        <option value={category._id}>{category.name}</option>
+                      );
+                    })}
                   </select>
                 </div>
                 <div className="prestations-inputs">
-                  <label htmlFor="description">Description</label>
+                  <label htmlFor="description-prestation">Description</label>
                   <textarea
-                    name="description"
-                    id="description"
+                    name="description-prestation"
+                    id="description-prestation"
                     cols="30"
                     rows="5"
                     value={selectedPrestation.description}
@@ -372,21 +442,31 @@ function Admin() {
                 <button type="submit">Modifier</button>
               </div>
               <div className="button-div add">
-                <button type="submit" ref={buttonOpen}>
-                  <p>Ajouter une prestation</p>
-                </button>
+                <a href ref={buttonOpenPrest}>
+                  Ajouter une prestation
+                </a>
               </div>
-              <div className="button-div update">
-                <button onClick={deletePrestation}>Supprimer</button>
+              <div className="button-div delete">
+                <a href onClick={deletePrestation}>
+                  Supprimer
+                </a>
               </div>
             </div>
           </form>
         </div>
-        <div className="prestationModal" ref={modalElement}>
-          <Modal
+        <div className="prestationModal" ref={modalElementPrest}>
+          <ModalPrestation
             addPrestation={addPrestation}
-            buttonOpen={buttonOpen}
-            modalElement={modalElement}
+            buttonOpen={buttonOpenPrest}
+            modalElement={modalElementPrest}
+            categories={categories}
+          />
+        </div>
+        <div className="categoryModal" ref={modalElementCat}>
+          <ModalCategory
+            addCategory={addCategory}
+            buttonOpen={buttonOpenCat}
+            modalElement={modalElementCat}
             categories={categories}
           />
         </div>

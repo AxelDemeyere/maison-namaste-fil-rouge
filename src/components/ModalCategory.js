@@ -2,7 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
-export default function Modal(props) {
+export default function ModalCategory(props) {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -34,37 +34,18 @@ export default function Modal(props) {
     <div className="modal">
       <FontAwesomeIcon className="btn-close" icon={faXmark} onClick={close} />
       <form
-        onSubmit={(e) => props.addPrestation(e)}
+        onSubmit={(e) => props.addCategory(e)}
         className="modal-prestations-container"
       >
-        <h1>Ajouter une prestation</h1>
+        <h1>Ajouter une catégorie</h1>
 
         <div className="modal-container-inputs">
-          <div className="modal-prestations-inputs">
-            <label htmlFor="name-prestation">Nom de la prestation</label>
+          <div className="modal-categories-inputs">
+            <label htmlFor="name-category">Nom de la catégorie</label>
             <input type="text" id="name" placeholder="Nom..." />
           </div>
-          <div className="modal-prestations-inputs">
-            <label htmlFor="time">Durée en minutes</label>
-            <input type="number" id="time" name="time" />
-          </div>
-          <div className="modal-prestations-inputs">
-            <label htmlFor="price">Prix en €</label>
-            <input type="number" id="price" />
-          </div>
-          <div className="modal-prestations-inputs">
-            <label htmlFor="category">Appartient à la catégorie:</label>
-            <select name="category" id="category">
-              {categories.map((category) => {
-                return (
-                  <option key={category._id} value={category._id}>
-                    {category.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <div className="modal-prestations-inputs">
+
+          <div className="modal-categories-inputs">
             <label htmlFor="description">Description</label>
             <textarea
               name="description"
@@ -72,6 +53,10 @@ export default function Modal(props) {
               cols="30"
               rows="5"
             ></textarea>
+          </div>
+          <div className="modal-categories-inputs">
+            <label htmlFor="image">Image</label>
+            <input type="file" name="image" />
           </div>
         </div>
 

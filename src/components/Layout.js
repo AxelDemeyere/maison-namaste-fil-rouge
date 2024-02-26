@@ -12,7 +12,7 @@ function Layout({ children }) {
   if (location.pathname === "/admin") {
     return (
       <>
-        <header>
+        <header className="layout-admin">
           <img onClick={() => navigate("/")} src={logoT} alt="" />
         </header>
         <Admin />

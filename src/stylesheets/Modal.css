@@ -1,4 +1,5 @@
-.prestationModal {
+.prestationModal,
+.categoryModal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -38,7 +39,8 @@
     }
 
     .modal-container-inputs {
-      .modal-prestations-inputs {
+      .modal-prestations-inputs,
+      .modal-categories-inputs {
         display: flex;
         flex-direction: column;
 

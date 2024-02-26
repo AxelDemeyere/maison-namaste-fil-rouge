@@ -1,0 +1,45 @@
+.main-about {
+  background-color: rgba(231, 238, 249, 0.5);
+}
+
+.cinematique {
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+
+  video {
+    width: 80%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.content-about {
+  margin: 0 auto;
+  h1 {
+    text-align: center;
+    font-family: Cinzel;
+    padding-top: 5rem;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    padding: 5rem;
+
+    p {
+      width: 30%;
+      text-align: center;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+      border-radius: 15px;
+      padding: 2rem;
+      background-color: white;
+    }
+
+    img {
+      height: 100%;
+      background-color: white;
+    }
+  }
+}

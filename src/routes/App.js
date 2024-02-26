@@ -9,7 +9,7 @@ function App() {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    await fetch(`http://10.125.24.52:5000/categories`)
+    await fetch(`${process.env.REACT_APP_API_URL}/categories`)
       .then((response) => response.json())
       .then((json) => {
         setCategories(json);

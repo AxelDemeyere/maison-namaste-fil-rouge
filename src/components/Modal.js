@@ -6,7 +6,7 @@ export default function Modal(props) {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    await fetch(`http://10.125.24.52:5000/categories`)
+    await fetch(`${process.env.REACT_APP_API_URL}/categories`)
       .then((response) => response.json())
       .then((json) => {
         setCategories(json);
@@ -64,15 +64,15 @@ export default function Modal(props) {
               })}
             </select>
           </div>
-        </div>
-        <div className="modal-prestations-inputs">
-          <label htmlFor="description">Description</label>
-          <textarea
-            name="description"
-            id="description"
-            cols="30"
-            rows="5"
-          ></textarea>
+          <div className="modal-prestations-inputs">
+            <label htmlFor="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="5"
+            ></textarea>
+          </div>
         </div>
 
         <div className="buttons-container submit">

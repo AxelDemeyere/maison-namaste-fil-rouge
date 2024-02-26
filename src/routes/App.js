@@ -1,24 +1,32 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Carousel from "../components/Carousel";
-import "../stylesheets/App.css";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Carousel from '../components/Carousel';
+import CarteCadeau from '../routes/CarteCadeau';
+import Cart from '../components/Cart';
+import '../stylesheets/App.css';
 
 function App() {
   const navigate = useNavigate();
-
   const [categories, setCategories] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const getCategories = async () => {
-    await fetch(`http://10.125.24.52:5000/categories`)
-      .then((response) => response.json())
-      .then((json) => {
-        setCategories(json);
-      });
+    try {
+      const response = await fetch(`http://10.125.24.52:5000/categories`);
+      const json = await response.json();
+      setCategories(json);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des catégories:", error);
+    }
   };
 
   useEffect(() => {
     getCategories();
   }, []);
+
+  const addToCart = (item) => {
+    setCartItems(prevItems => [...prevItems, item]);
+  };
 
   return (
     <div className="App">
@@ -39,9 +47,7 @@ function App() {
               <h2>{categorie.name}</h2>
               <p>{categorie.description}</p>
               <div className="button-div">
-                <button
-                  onClick={() => navigate(`/prestations#${categorie.name}`)}
-                >
+                <button onClick={() => navigate(`/prestations#${categorie.name}`)}>
                   Découvrir
                 </button>
               </div>
@@ -49,6 +55,9 @@ function App() {
           </div>
         ))}
       </main>
+
+      <CarteCadeau addToCart={addToCart} />
+      <Cart items={cartItems} />
     </div>
   );
 }

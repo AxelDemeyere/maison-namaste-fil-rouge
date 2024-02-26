@@ -1,6 +1,6 @@
 .gift-card {
     position: relative;
-    width: 100%;
+    width: auto;
     height: 500px;
     background: linear-gradient(to bottom right, #87CEFA, #FFB6C1);
     padding: 20px;
@@ -10,31 +10,34 @@
     justify-content: space-between;
     color: #333;
     font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
   }
   
   .gift-card input,
   .gift-card textarea {
     border: 2px solid #fff;
     border-radius: 5px;
-    padding: 10px;
-    margin-top: 10px;
-    width: calc(100% - 20px);
-    font-family: 'Arial', sans-serif;
-    font-size: 1em;
+    margin-top: 20px;
+    font-family: "Parisienne", cursive;
+    font-size: 1.5rem;
   }
-  
+
   .gift-card textarea {
     height: 80px;
+    width: 50%;
     resize: none;
   }
   
   .gift-card button {
     background-color: #db81ae;
+    align-self: center;
     border: none;
     border-radius: 5px;
     color: white;
+    margin-top: 20px;
     padding: 10px 20px;
     cursor: pointer;
+    width: 50%;
     transition: background-color 0.3s ease;
   }
   
@@ -43,15 +46,9 @@
   }
   
   .gift-card p {
-    font-size: 0.8em;
+    font-size: 1.5rem;
     text-align: right;
-  }
-  
-  .gift-card h1 {
-    font-size: 2em;
-    text-align: center;
-    margin: 0;
-    color: #fff;
+    margin-top: 20px;
   }
   
   .gift-card .recipient,
@@ -68,15 +65,27 @@
     background-color: rgba(255, 255, 255, 0.5);
   }  
 
+  .gift-card span {
+    display: flex;
+    margin-top: 20px;
+  }
+  
   .gift-card h2 {
-    color: #333;
-    margin-bottom: 8px;
+    text-align: center;
+    font-family: "Parisienne", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5rem;
+  }
+
+  .gift-card input {
+    width: 50%;
   }
   
   .sender-offer {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
   }
   
   .sender-offer span {
@@ -87,5 +96,13 @@
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+  }
+
+  .gift-card h3 {
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 20px;
   }
   

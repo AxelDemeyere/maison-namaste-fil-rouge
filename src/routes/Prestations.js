@@ -10,6 +10,13 @@ function Prestations() {
   });
   const [fixedColumn, setFixedColumn] = useState(false);
 
+  // State du panier
+  const [cart, setCart] = useState({
+    prestations: [],
+    time: 0,
+    total: 0,
+  });
+
   //Appel API
   const getCategories = async () => {
     await fetch(`${process.env.REACT_APP_API_URL}/categories`)
@@ -41,13 +48,6 @@ function Prestations() {
       setFixedColumn(false);
     }
   };
-
-  // State du panier
-  const [cart, setCart] = useState({
-    prestations: [],
-    time: 0,
-    total: 0,
-  });
 
   //Ajouter prestation au panier
   const addToCart = (prestation) => {

@@ -1,36 +1,30 @@
-const mongoose = require('mongoose');
-const Joi = require('joi');
+const admin = require('firebase-admin');
 
-const userSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  dateOfBirth: { type: Date },
-  email: { type: String, required: true },
-  phoneNumber: { type: String },
-  gender: { type: String },
-  codePostal: { type: String },
-  ville: { type: String },
-  password: { type: String, required: true },
+const serviceAccount = require('./path/to/your-firebase-adminsdk.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
 });
 
-function validateUser(user) {
-  const schema = Joi.object({
-    firstName: Joi.string().min(3).max(100).required(),
-    lastName: Joi.string().min(3).max(100).required(),
-    dateOfBirth: Joi.date(),
-    email: Joi.string().min(5).max(255).required().email(),
-    phoneNumber: Joi.string(),
-    gender: Joi.string(),
-    codePostal: Joi.string(),
-    ville: Joi.string(),
-    password: Joi.string().min(8).max(100).required()
-  });
-  return schema.validate(user);
-}
+const db = admin.firestore();
 
-const User = mongoose.model('User', userSchema);
+const createUser = async (userData) => {
+  const userRef = db.collection('users').doc(userData.email);
+  const doc = await userRef.get();
+  if (doc.exists) {
+    throw new Error('User already exists');
+  } else {
+    const hashedPassword = await bcrypt.hash(userData.password, 12);
+    await userRef.set({ ...userData, password: hashedPassword });
+  }
+};
 
-module.exports = {
-  User,
-  validateUser
+const findUserByEmail = async (email) => {
+  const userRef = db.collection('users').doc(email);
+  const doc = await userRef.get();
+  if (!doc.exists) {
+    return null;
+  } else {
+    return doc.data();
+  }
 };

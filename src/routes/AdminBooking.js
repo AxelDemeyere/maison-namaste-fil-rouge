@@ -19,26 +19,41 @@ export default function AdminBooking() {
     <>
       <div>
         <h2>Réservation :</h2>
-        {booking.map((item) => {
-          return (
-            <>
-              <div className="booking-container">
-                <p>N° de réservation : {item._id}</p>
-                <div>
-                  <ul>
-                    {console.log(item)}
-                    {item.prestations.map((prestation) => {
-                      return <li>{prestation.name}</li>;
-                    })}
-                  </ul>
+        <div className="booking-container">
+          {booking.map((item) => {
+            return (
+              <>
+                <div className="booking-details">
+                  <h3>N° de réservation : {item._id}</h3>
+                  <div className="booking-info prest">
+                    <p>Prestations :</p>
+                    <ul>
+                      {console.log(item)}
+                      {item.prestations.map((prestation) => {
+                        return <li>{prestation.name}</li>;
+                      })}
+                    </ul>
+                  </div>
+                  <div className="booking-info total">
+                    <p>
+                      Total : <span>{item.total}€</span>
+                    </p>
+                  </div>
+                  <div className="booking-info time">
+                    <p>
+                      Durée: <span>{item.time} minutes</span>
+                    </p>
+                  </div>
+                  <div className="booking-info date">
+                    <p>
+                      Date : <span>{item.date}</span>
+                    </p>
+                  </div>
                 </div>
-                <p>total : {item.total}€</p>
-                <p>Durée: {item.time} minutes</p>
-                <p>Date : {item.date}</p>
-              </div>
-            </>
-          );
-        })}
+              </>
+            );
+          })}
+        </div>
       </div>
     </>
   );

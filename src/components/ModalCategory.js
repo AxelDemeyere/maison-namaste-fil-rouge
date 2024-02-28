@@ -55,8 +55,8 @@ export default function ModalCategory(props) {
             ></textarea>
           </div>
           <div className="modal-categories-inputs">
-            <label htmlFor="image">Image</label>
-            <input type="file" name="image" />
+            <label htmlFor="image">Lien de l'image</label>
+            <input type="text" name="image" />
           </div>
         </div>
 

@@ -1,25 +1,57 @@
-.panier-vide {
-  display: flex;
-  justify-content: center;
-  margin: 5rem auto;
-  text-align: center;
-  padding: 3rem;
-  border-radius: 12px;
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
-  width: fit-content;
-}
-
-.date-picker {
-  display: flex;
-  margin: 2rem auto;
-  background-image: linear-gradient(to top right, #a2c3db, #fedddd);
-  width: fit-content;
-  padding: 0.3rem;
-
-  border-radius: 12px;
-  justify-content: center;
-  .calendar {
-    width: 300px;
+.main-rdv {
+  .panier-vide {
+    display: flex;
+    justify-content: center;
+    margin: 5rem auto;
+    text-align: center;
+    padding: 3rem;
+    border-radius: 12px;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+    width: fit-content;
+  }
+
+  .date-picker {
+    display: flex;
+    margin: 5rem auto;
+    background-image: linear-gradient(to top right, #a2c3db, #fedddd);
+    width: fit-content;
+    padding: 0.3rem;
+
+    border-radius: 12px;
+    justify-content: center;
+    .calendar {
+      width: 30rem;
+      height: 30rem;
+      line-height: 3rem;
+      box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .button-div {
+    display: flex;
+    justify-content: center;
+    margin: 5rem auto;
+    width: fit-content;
+    background-image: linear-gradient(
+      50deg,
+      hsl(205deg 44% 75%) 0%,
+      hsl(339deg 17% 68%) 53%,
+      hsla(0, 40%, 63%, 0.459) 100%
+    );
+    padding: 0.25rem;
+    border-radius: 18px;
+
+    button {
+      padding: 0.3rem 2rem;
+      font-weight: 500;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s;
+    }
+
+    button:hover {
+      box-shadow: inset 0px 10px 8px -3px rgba(0, 0, 0, 0.3);
+    }
   }
 }

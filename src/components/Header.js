@@ -9,7 +9,11 @@ export default function Header() {
 
   return (
     <>
-      <FontAwesomeIcon icon={faGear} onClick={() => navigate("/admin")} className="settings-icon" />
+      <FontAwesomeIcon
+        icon={faGear}
+        onClick={() => navigate("/admin")}
+        className="settings-icon"
+      />
       <header>
         <img onClick={() => navigate("/")} src={logoT} alt="" />
       </header>
@@ -17,7 +21,6 @@ export default function Header() {
         <ul className="nav-desktop">
           <li onClick={() => navigate("/a-propos")}>L'entreprise</li>
           <li onClick={() => navigate("/prestations")}>Prestations</li>
-          <li onClick={() => navigate("/rendez-vous")}>Rendez-vous</li>
           <li onClick={() => navigate("/contact")}>Contact</li>
           <li onClick={() => navigate("/carte-cadeau")}>Carte cadeau</li>
         </ul>

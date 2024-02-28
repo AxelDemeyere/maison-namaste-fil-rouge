@@ -1,3 +1,5 @@
+import { ConfigProvider } from "antd";
+import frFR from "antd/locale/fr_FR";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -17,18 +19,20 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path={"/"} element={<App />} />
-          <Route path={"/a-propos"} element={<About />} />
-          <Route path={"/prestations"} element={<Prestations />} />
-          <Route path={"/rendez-vous"} element={<RendezVous />} />
-          <Route path={"/contact"} element={<Contact />} />
-          <Route path={"/carte-cadeau"} element={<CarteCadeau />} />
-          <Route path={"/admin"} element={<Admin />} />
-          <Route path={"/*"} element={<NotFound />} />
-        </Routes>
-      </Layout>
+      <ConfigProvider locale={frFR}>
+        <Layout>
+          <Routes>
+            <Route path={"/"} element={<App />} />
+            <Route path={"/a-propos"} element={<About />} />
+            <Route path={"/prestations"} element={<Prestations />} />
+            <Route path={"/rendez-vous"} element={<RendezVous />} />
+            <Route path={"/contact"} element={<Contact />} />
+            <Route path={"/carte-cadeau"} element={<CarteCadeau />} />
+            <Route path={"/admin"} element={<Admin />} />
+            <Route path={"/*"} element={<NotFound />} />
+          </Routes>
+        </Layout>
+      </ConfigProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

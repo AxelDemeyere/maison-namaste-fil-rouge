@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import logoT from "../img/logo-transparence.png";
 import Admin from "../routes/Admin";
+import AdminBooking from "../routes/AdminBooking";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -9,15 +10,30 @@ function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  if (location.pathname === "/admin") {
-    return (
-      <>
-        <header className="layout-admin">
-          <img onClick={() => navigate("/")} src={logoT} alt="" />
-        </header>
-        <Admin />
-      </>
-    );
+  if (
+    location.pathname === "/admin" ||
+    location.pathname === "/admin/booking"
+  ) {
+    if (location.pathname === "/admin") {
+      return (
+        <>
+          <header className="layout-admin">
+            <img onClick={() => navigate("/")} src={logoT} alt="" />
+          </header>
+
+          <Admin />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <header className="layout-admin">
+            <img onClick={() => navigate("/")} src={logoT} alt="" />
+          </header>
+          <AdminBooking />
+        </>
+      );
+    }
   } else {
     return (
       <>

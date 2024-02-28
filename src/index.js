@@ -14,6 +14,7 @@ import Contact from "./routes/Contact";
 import NotFound from "./routes/NotFound";
 import Prestations from "./routes/Prestations";
 import RendezVous from "./routes/RendezVous";
+import AdminBooking from "./routes/AdminBooking";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -30,6 +31,7 @@ root.render(
             <Route path={"/carte-cadeau"} element={<CarteCadeau />} />
             <Route path={"/admin"} element={<Admin />} />
             <Route path={"/*"} element={<NotFound />} />
+            <Route path={"/admin/booking"} element={<AdminBooking />} />
           </Routes>
         </Layout>
       </ConfigProvider>

@@ -136,6 +136,7 @@ function Admin() {
     }
   };
 
+  // Supprimer une catégorie
   const deleteCategory = async () => {
     try {
       const response = await fetch(
@@ -158,7 +159,6 @@ function Admin() {
   const handleChangeCategory = (e) => {
     const categoryId = e.target.value;
     const category = categories.find((cat) => cat._id === categoryId);
-
     setSelectedCategory(category);
   };
 
@@ -171,7 +171,6 @@ function Admin() {
   };
 
   //CRUD PRESTATIONS
-
   //Ajouter une prestation
   const addPrestation = async (e) => {
     e.preventDefault();

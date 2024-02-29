@@ -18,7 +18,7 @@ export default function AdminBooking() {
   return (
     <>
       <div>
-        <h2>Réservation :</h2>
+        <h3>Réservation :</h3>
         <div className="booking-container">
           {booking.map((item) => {
             return (

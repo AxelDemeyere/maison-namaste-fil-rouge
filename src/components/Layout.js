@@ -53,7 +53,6 @@ function Layout({ children }) {
             </svg>
           </a>
         </main>
-
         <Footer />
       </>
     );

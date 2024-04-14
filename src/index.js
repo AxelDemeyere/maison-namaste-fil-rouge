@@ -34,7 +34,10 @@ root.render(
               element={<Admin />}
             />
             <Route path={"/*"} element={<NotFound />} />
-            <Route path={"/admin/booking"} element={<AdminBooking />} />
+            <Route
+              path={`/${process.env.REACT_APP_ADMIN_URL}/booking}`}
+              element={<AdminBooking />}
+            />
           </Routes>
         </Layout>
       </ConfigProvider>

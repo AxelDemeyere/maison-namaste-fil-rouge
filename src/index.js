@@ -8,13 +8,13 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import About from "./routes/About";
 import Admin from "./routes/Admin";
+import AdminBooking from "./routes/AdminBooking";
 import App from "./routes/App";
 import CarteCadeau from "./routes/CarteCadeau";
 import Contact from "./routes/Contact";
 import NotFound from "./routes/NotFound";
 import Prestations from "./routes/Prestations";
 import RendezVous from "./routes/RendezVous";
-import AdminBooking from "./routes/AdminBooking";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -29,7 +29,10 @@ root.render(
             <Route path={"/rendez-vous"} element={<RendezVous />} />
             <Route path={"/contact"} element={<Contact />} />
             <Route path={"/carte-cadeau"} element={<CarteCadeau />} />
-            <Route path={"/admin"} element={<Admin />} />
+            <Route
+              path={`/${process.env.REACT_APP_ADMIN_URL}`}
+              element={<Admin />}
+            />
             <Route path={"/*"} element={<NotFound />} />
             <Route path={"/admin/booking"} element={<AdminBooking />} />
           </Routes>

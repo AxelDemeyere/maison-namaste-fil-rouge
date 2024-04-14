@@ -1,3 +1,5 @@
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import Cart from "../components/Cart";
 import SearchBar from "../components/SearchBar";
@@ -105,7 +107,11 @@ function Prestations() {
           </div>
         </nav>
         <div className={`col-droite ${fixedColumn ? "fixed" : ""}`}>
+          <div>
+            <FontAwesomeIcon className="cart-icon" icon={faCartShopping} />
+          </div>
           <SearchBar categories={categories} setCategories={setCategories} />
+
           {categories.filtered.map((categorie) => (
             <div
               key={categorie._id}

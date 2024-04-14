@@ -11,7 +11,7 @@ export default function Header() {
     <>
       <FontAwesomeIcon
         icon={faGear}
-        onClick={() => navigate("/admin")}
+        onClick={() => navigate(`/${process.env.REACT_APP_ADMIN_URL}`)}
         className="settings-icon"
       />
       <header>
